@@ -1,7 +1,9 @@
 # 应用容器化
 
 使用Docker将制作的应用制作成容器。
+
 前端[movieclient](https://github.com/servicecompute/movieclient)
+
 后端数据库[boltdb-http-interface](https://github.com/servicecompute/boltdb-http-interface)
 
 ## 安装Docker
@@ -14,20 +16,10 @@ apt install docker.io
 
 安装Docker。
 
-使用
-
-```
-systemctl start docker
-```
-
+使用```systemctl start docker```
 命令可以运行Docker
 
-输入
-
-```
-docker version
-```
-
+输入```docker version```
 可以查看Docker版本
 
 ## 前端容器化
@@ -36,12 +28,12 @@ docker version
 
 ```
 # 安装docker后获取镜像
-FROM node:8.12.0-slim
+FROM ubuntu
 # 安装nginx
 RUN apt-get update  && apt-get install -y nginx
 # 创建文件夹作为中间目录，并拷贝
 WORKDIR /app
-COPY . /app/
+COPY ./app/
 # 应用的访问端口
 EXPOSE 8080
 # 安装依赖，打包，将包复制到nginx目录下面，删除nginx默认目录，移动配置文件，删除/app里面的文件
